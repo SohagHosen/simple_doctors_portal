@@ -22,9 +22,9 @@ const Booking = ({ booking, date, setBookingSuccess, time, setTime }) => {
           >
             {name}
           </Typography>
-          {/* <Typography variant="h6" gutterBottom component="div">
-              {time}
-            </Typography> */}
+          <Typography variant="h6" gutterBottom component="div">
+            {booking.time}
+          </Typography>
           <Typography variant="caption" display="block" gutterBottom>
             Price ${price}
           </Typography>

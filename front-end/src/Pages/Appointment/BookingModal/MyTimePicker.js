@@ -22,7 +22,6 @@ export default function MyTimePicker({ time, setTime, setAvailableTime }) {
       <TimePicker
         value={time}
         onChange={handleChange}
-        // onChange={(newValue) => setTime(newValue)}
         renderInput={(params) => (
           <TextField
             {...params}
