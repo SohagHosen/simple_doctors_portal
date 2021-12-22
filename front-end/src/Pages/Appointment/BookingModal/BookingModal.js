@@ -56,6 +56,7 @@ const BookingModal = ({
       price,
       serviceName: name,
       date: date.toLocaleDateString(),
+      status: "Pending",
     };
     // send to the server
     fetch("http://localhost:5000/appointments", {

@@ -58,6 +58,34 @@ async function run() {
       const appointments = await cursor.toArray();
       res.json(appointments);
     });
+    app.get("/allAppointments", async (req, res) => {
+      const cursor = appointmentsCollection.find({});
+      const appointments = await cursor.toArray();
+      res.json(appointments);
+    });
+    // delete appointment room
+    app.delete("/appointments/cancel/:id", async (req, res) => {
+      const query = { _id: ObjectId(req.params.id) };
+      const result = await appointmentsCollection.deleteOne(query);
+      res.json(result);
+    });
+
+    // update appointment status
+    app.patch("/appointments/status/:id", async (req, res) => {
+      console.log(req.params.id);
+      const filter = { _id: ObjectId(req.params.id) };
+      const options = { upsert: true };
+      // create a document that sets the plot of the movie
+      const updateDoc = {
+        $set: req.body,
+      };
+      const result = await appointmentsCollection.updateOne(
+        filter,
+        updateDoc,
+        options
+      );
+      res.json(result);
+    });
 
     app.get("/appointments/:id", async (req, res) => {
       const id = req.params.id;
